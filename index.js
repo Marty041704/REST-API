@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import auth from "./middleware/authenticate.js";
 
 const app = express();
 const port = 3000;
@@ -38,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 //POST
-app.post('/post', (req, res) => {
+app.post('/post', auth, (req, res) => {
     var data = req.body;
     console.log(data);
 });
